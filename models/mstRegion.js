@@ -1,9 +1,6 @@
-const { Model } = require('objection');
-const knex = require('../config/knex')
+const BaseModel = require(".");
 
-Model.knex(knex)
-
-class Region extends Model {
+class Region extends BaseModel {
     static get tableName() {
       return 'mst_region';
     }

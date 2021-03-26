@@ -23,7 +23,7 @@ const file = multer({storage : storage}).single('upload')
 const paginate = (params) => {
     return {
         pageNo :  params.pageNo ? params.pageNo : 1,
-        pageSize : params.pageSize ? params.pageSize : 5,
+        pageSize : params.pageSize ? params.pageSize : 10,
         search : params.search ? params.search : ''
     }
 }
@@ -44,9 +44,7 @@ const fileName = (req,file) => {
 }
 
 const mimeType = (req,file) => {
-    console.log(file)
     var type = file.originalname.split('.')
-    console.log(type[type.length-1])
     return type[type.length-1]
 }
 

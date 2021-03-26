@@ -1,26 +1,16 @@
 const { Model } = require('objection');
 const knex = require('../config/knex')
+const moment = require('moment')
 
 Model.knex(knex)
 
-class Comment extends Model {
-    static get tableName() {
-      return 'comment';
-    }
-  
-    static get relationMappings() {
-        const Customer = require('./customer')
-        return {
-            users : {
-                relation: Model.BelongsToOneRelation,
-                modelClass: Customer,
-                join: {
-                    from: 'comment.customer_id',
-                    to: 'customer.id'
-                }
-            }
-        }
-    }
+class BaseModel extends Model {
+  $beforeUpdate() {
+    this.updated_at = moment().format();   
   }
-  
-  module.exports = Comment;
+  $beforeInsert() {
+    this.created_at = moment().format();
+  }
+}
+
+module.exports = BaseModel;

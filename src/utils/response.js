@@ -1,6 +1,6 @@
 const responseSuccesSingle = (data) => {
     const res = {
-        success  : "true",
+        success  : true,
         data : data
     }
     return res
@@ -8,8 +8,8 @@ const responseSuccesSingle = (data) => {
 
 const responseSuccesList = (data) => {
     const res = {
-        success  : "true",
-        message : data
+        success  : true,
+        data : data
     }
     return res
 }
@@ -17,7 +17,7 @@ const responseSuccesList = (data) => {
 
 const resSuccessNotFound = () => {
     const res = {
-        success  : "true",
+        success  : true,
         message : "Data not Found"
     }
     return res
@@ -35,7 +35,7 @@ const resFailNotFound = (msg) => {
 
 const resSuccess = (msg) => {
     const res = {
-        success  : "true",
+        success  : true,
         message : msg
     }
     return res
