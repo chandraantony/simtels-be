@@ -9,7 +9,7 @@ const cloudinary = require('./cloudinary')
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary.cloudinary,
     params: {
-      folder: '/file/kobra',      
+      folder: '/file/simtels',      
       resource_type : "raw",
       format:(req,file) => mimeType(req,file),
       public_id: (req, file) => fileName(req,file),
