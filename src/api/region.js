@@ -2,8 +2,9 @@ const express = require('express');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.json(['😀', '😳', '🙄']);
+
+router.get('/', (req, res,next) => {
+  res.json('asdasdasd')
 });
 
 module.exports = router;

@@ -17,7 +17,9 @@
   },
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.25.0",
     "compression": "^1.7.4",
     "connect-timeout": "^1.9.0",
     "cors": "^2.8.5",
@@ -29,6 +31,8 @@
     "knex": "^0.21.18",
     "moment": "^2.29.1",
     "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "multer-storage-cloudinary": "^4.0.0",
     "objection": "^2.2.14",
     "pg": "^8.5.1",
     "uuid": "^8.3.2"
