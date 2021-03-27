@@ -33,6 +33,15 @@ const resFailNotFound = (msg) => {
 }
 
 
+const resSuccessCreate = (msg,data) => {
+    const res = {
+        success  : true,
+        message : msg,
+        data : data,
+    }
+    return res
+}
+
 const resSuccess = (msg) => {
     const res = {
         success  : true,
@@ -43,6 +52,7 @@ const resSuccess = (msg) => {
 
 module.exports = {
     resSuccessNotFound,
+    resSuccessCreate,
     responseSuccesList,
     responseSuccesSingle,
     resSuccess,

@@ -31,7 +31,7 @@ exports.create = async (req,res,next) => {
     try {
         const request = req.body
         const query = await insert(request)
-        res.json(query)
+        res.json(makeResponse.resSuccessCreate('Data Created',query))
     } catch (error) {
         next(error)
     }
@@ -43,9 +43,10 @@ exports.update = async (req,res,next) => {
         const request = req.body
         const id = req.params.id
         const query = await update(id,request)
-        res.json({
-            msg : 'update'
-        })
+        if(query){
+            res.json(makeResponse.resSuccess('Data Updated'))
+        }
+        res.json(makeResponse.resSuccessNotFound())
     } catch (error) {
         next(error)
     }
@@ -56,11 +57,11 @@ exports.delete = async(req,res,next) => {
     try {
         const id = req.params.id
         const query = await deleteData(id)
-        console.log(query)
+        if(query){
+            res.json(makeResponse.resSuccess('Data Deleted'))
+        }
+        res.json(makeResponse.resSuccessNotFound())
     } catch (error) {
         next(error)
     }
-    res.json({
-        msg : 'delete'
-    })
 }
