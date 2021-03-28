@@ -1,3 +1,5 @@
+const { off } = require('../src/app');
+
 require('dotenv').config();
 
 module.exports = {
@@ -38,11 +40,14 @@ module.exports = {
   
     production: {
         client: process.env.DB_CONNECTION,
+        ssl: {
+          rejectUnauthorized: false
+        },
         connection: {
           host :  process.env.DB_HOST,
           database: process.env.DB_DATABASE,
           user:     process.env.DB_USERNAME,
-          password: process.env.DB_PASSWORD
+          password: process.env.DB_PASSWORD,
         },
         pool: {
           min: 2,
