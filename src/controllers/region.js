@@ -7,8 +7,9 @@ exports.getData = async (req,res,next) => {
         const query = await findById(id)
         if(query){
             res.json(makeResponse.responseSuccesSingle(query))
-        }
-        res.json(makeResponse.resSuccessNotFound())
+        }else{
+            res.json(makeResponse.resSuccessNotFound())
+        }        
     } catch (error) {
         next(error)   
     }
@@ -45,8 +46,10 @@ exports.update = async (req,res,next) => {
         const query = await update(id,request)
         if(query){
             res.json(makeResponse.resSuccess('Data Updated'))
+        }else{
+            res.json(makeResponse.resSuccessNotFound())
         }
-        res.json(makeResponse.resSuccessNotFound())
+       
     } catch (error) {
         next(error)
     }
@@ -59,8 +62,9 @@ exports.delete = async(req,res,next) => {
         const query = await deleteData(id)
         if(query){
             res.json(makeResponse.resSuccess('Data Deleted'))
-        }
-        res.json(makeResponse.resSuccessNotFound())
+        }else{
+            res.json(makeResponse.resSuccessNotFound())
+        }        
     } catch (error) {
         next(error)
     }

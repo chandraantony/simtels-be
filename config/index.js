@@ -35,7 +35,7 @@ module.exports = {
     },
   
     production: {
-        client: process.env.DB_CONNECTION,
+        client: process.env.DB_CONNECTION+"?ssl=true",
         connection: {
           database: process.env.DB_DATABASE,
           user:     process.env.DB_USERNAME,
