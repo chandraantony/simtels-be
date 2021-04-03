@@ -1,8 +1,8 @@
 const BaseModel = require(".");
 
-class JobProgress extends BaseModel {
+class Customer extends BaseModel {
     static get tableName() {
-      return 'mst_job_status';
+      return 'mst_customer';
     }
   
     static get relationMappings() {
@@ -20,4 +20,4 @@ class JobProgress extends BaseModel {
     }
   }
   
-  module.exports = JobProgress;
+  module.exports = Customer;
