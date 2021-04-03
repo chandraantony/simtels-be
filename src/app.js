@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
 const timeout = require('connect-timeout');
-const compression = require('compression')
+const compression = require('compression');
 
 require('dotenv').config();
 
@@ -14,8 +14,8 @@ const app = express();
 
 app.use(morgan('dev'));
 app.use(helmet());
-app.use(compression())
-app.use(timeout('5s'))
+app.use(compression());
+app.use(timeout('5s'));
 app.use(cors());
 app.use(express.json());
 
@@ -26,7 +26,6 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/v1', api);
-
 
 app.use(middlewares.haltOnTimedout);
 app.use(middlewares.notFound);

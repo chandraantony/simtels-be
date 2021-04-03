@@ -1,13 +1,12 @@
 const jwt = require('jsonwebtoken');
 
 checkProvidedToken = (token) => {
-  if(token == undefined || token == null || token == ''){
-    return false
+  if (token == undefined || token == null || token == '') {
+    return false;
   }
-  return true
-}
-
+  return true;
+};
 
 module.exports = {
   checkProvidedToken
-}
+};

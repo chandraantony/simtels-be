@@ -15,11 +15,11 @@ function errorHandler(err, req, res, next) {
   });
 }
 
-function haltOnTimedout (req, res, next) {
+function haltOnTimedout(req, res, next) {
   if (!req.timedout) {
     // const error = new Error(`- Request Time Out - ${req.originalUrl}`);
     next();
-  } 
+  }
 }
 
 module.exports = {
