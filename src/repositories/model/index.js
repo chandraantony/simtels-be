@@ -21,3 +21,11 @@ exports.customer = (data) => {
     }
     return request
 }
+
+exports.services = (data) => {
+    const request = {
+        name : data.name,
+        description : data.description
+    }
+    return request
+}

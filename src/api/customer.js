@@ -1,14 +1,14 @@
 const express = require('express');
-const jobProgressController = require('../controllers/jobProgress');
+const customerController = require('../controllers/customer');
 
 const router = express.Router();
 
 
-router.get('/find/:id', jobProgressController.getData);
-router.get('/list', jobProgressController.getListData);
-router.post('/create', jobProgressController.create);
-router.put('/update/:id', jobProgressController.update);
-router.delete('/delete/:id', jobProgressController.delete);
+router.get('/find/:id', customerController.getData);
+router.get('/list', customerController.getListData);
+router.post('/create', customerController.create);
+router.put('/update/:id', customerController.update);
+router.delete('/delete/:id', customerController.delete);
 
 
 module.exports = router;

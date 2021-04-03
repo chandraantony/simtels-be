@@ -5,6 +5,8 @@ const region = require('./region')
 const jobProgress = require('./jobProgress')
 const upload = require('./upload')
 const customer = require('./customer')
+const services = require('./services')
+
 
 const router = express.Router();
 
@@ -18,6 +20,7 @@ router.use('/users', users)
 router.use('/region', region)
 router.use('/jobProgress', jobProgress)
 router.use('/customer', customer)
+router.use('/services', services)
 router.use('/upload', upload)
 
 
