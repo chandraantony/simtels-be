@@ -13,3 +13,11 @@ exports.jobProgress = (data) => {
     }
     return request
 }
+
+exports.customer = (data) => {
+    const request = {
+        name : data.name,
+        description : data.description
+    }
+    return request
+}
