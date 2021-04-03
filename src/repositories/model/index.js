@@ -29,3 +29,11 @@ exports.services = (data) => {
     }
     return request
 }
+
+exports.role = (data) => {
+    const request = {
+        name : data.name,
+        description : data.description
+    }
+    return request
+}
