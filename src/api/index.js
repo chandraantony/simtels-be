@@ -7,6 +7,7 @@ const upload = require('./upload');
 const customer = require('./customer');
 const role = require('./role');
 const services = require('./services');
+const project = require('./project');
 
 const router = express.Router();
 
@@ -17,6 +18,7 @@ router.get('/', (req, res) => {
 });
 
 router.use('/users', users);
+router.use('/project', project);
 router.use('/region', region);
 router.use('/jobProgress', jobProgress);
 router.use('/customer', customer);
