@@ -8,7 +8,7 @@ const customer = require('./customer');
 const role = require('./role');
 const services = require('./services');
 const project = require('./project');
-const finance = require('./finance')
+const finance = require('./finance');
 
 const router = express.Router();
 
