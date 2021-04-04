@@ -98,13 +98,13 @@ exports.detailProject = (data) => {
   return request;
 };
 
-exports.finnace = (data) => {
+exports.finance = (data) => {
   const request = {
     gr_number	: data.gr_number,
     gr_date : data.gr_date,
     gr_nominal : data.gr_nominal,	
     invoice_number : data.invoice_number,	
-    invoice_date : data.invoice_number,
+    invoice_date : data.invoice_date,
     invoice_nominal	: data.invoice_nominal,	
     payment_status : data.payment_status,	
     payent_date	: data.payent_date,	

@@ -1,8 +1,8 @@
 const BaseModel = require(".");
 
-class Finnance extends BaseModel {
+class Finance extends BaseModel {
     static get tableName() {
-      return 'finnance';
+      return 'finance';
     }
   
     static get relationMappings() {
@@ -20,4 +20,4 @@ class Finnance extends BaseModel {
     }
   }
   
-  module.exports = Finnance;
+  module.exports = Finance;
