@@ -1,4 +1,4 @@
-exports.upload = (req, res, next) => {
+exports.upload = (req, res) => {
   console.log(req.file);
   res.json({
     sucess: true,

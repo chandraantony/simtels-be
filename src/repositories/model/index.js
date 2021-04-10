@@ -115,3 +115,17 @@ exports.finance = (data) => {
   };
   return request;
 };
+
+exports.user = (data) => {
+  const request = {
+    name: data.name,
+    role_id: data.role_id,
+    job: data.job,
+    job_desc: data.job_desc,
+    descriptions: data.descriptions,
+    picture: data.picture,
+    email: data.email,
+    address: data.address
+  };
+  return request;
+};
