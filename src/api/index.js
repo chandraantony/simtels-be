@@ -9,6 +9,7 @@ const role = require('./role');
 const services = require('./services');
 const project = require('./project');
 const finance = require('./finance');
+const auth = require('./auth');
 
 const router = express.Router();
 
@@ -27,5 +28,6 @@ router.use('/services', services);
 router.use('/role', role);
 router.use('/finance', finance);
 router.use('/upload', upload);
+router.use('/auth', auth);
 
 module.exports = router;

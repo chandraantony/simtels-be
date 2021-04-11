@@ -6,6 +6,18 @@ const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const cloudinary = require('./cloudinary');
 
 //
+
+const fileName = (req, files) => {
+  const split = files.originalname.split('.');
+  const name = `${split[0]}-${Date.now()}`;
+  return name;
+};
+
+const mimeType = (req, files) => {
+  const type = files.originalname.split('.');
+  return type[type.length - 1];
+};
+
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary.cloudinary,
   params: {
@@ -29,17 +41,6 @@ const paginate = (params) => ({
 const salt = (val) => bcrypt.hashSync(val, saltRounds);
 
 const compare = (val, hash) => bcrypt.compareSync(val, hash);
-
-const fileName = (req, file) => {
-  const split = file.originalname.split('.');
-  const name = `${split[0]}-${Date.now()}`;
-  return name;
-};
-
-const mimeType = (req, file) => {
-  const type = file.originalname.split('.');
-  return type[type.length - 1];
-};
 
 module.exports = {
   salt,

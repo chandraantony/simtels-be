@@ -9,9 +9,9 @@ exports.findById = (id) => {
 exports.findAll = (pageSize, pageNumber, search) => {
   let data;
   if (search) {
-    data = User.query().whereRaw('LOWER(name) LIKE ?', `%${search.toLowerCase()}%`).page(pageNumber, pageSize);
+    data = User.query().whereRaw('LOWER(mst_user.name) LIKE ?', `%${search.toLowerCase()}%`).page(pageNumber, pageSize).withGraphJoined('role_detail');
   } else {
-    data = User.query().page(pageNumber, pageSize);
+    data = User.query().page(pageNumber, pageSize).withGraphJoined('role_detail');
   }
   return data;
 };
@@ -23,11 +23,13 @@ exports.insert = (data) => {
 };
 
 exports.update = (id, data) => {
-  const model = Model.user(data);
+  const model = Model.editUser(data);
   const query = User.query()
     .findById(id)
     .patch(model);
   return query;
 };
+
+exports.findByEmail = (email) => User.query().findOne('email', email);
 
 exports.deleteData = (id) => User.query().deleteById(id);

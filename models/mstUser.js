@@ -12,8 +12,8 @@ class User extends BaseModel {
         relation: BaseModel.BelongsToOneRelation,
         modelClass: Role,
         join: {
-          from: 'comment.customer_id',
-          to: 'customer.id'
+          from: 'mst_user.role_id',
+          to: 'mst_role.id'
         }
       }
     };

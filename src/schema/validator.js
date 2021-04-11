@@ -1,18 +1,11 @@
 const Joi = require('joi');
 
-exports.login = (req, res, next) => {
-  const data = req.body;
+exports.login = (req) => {
   const schema = Joi.object({
-    user_name: Joi.string().required(),
+    email: Joi.string().required(),
     password: Joi.string().required(),
   });
-  const validate = schema.validate(data);
-  if (validate.error != null) {
-    res.status(400);
-    next(validate.error);
-  } else {
-    next();
-  }
+  return schema.validate(req);
 };
 
 exports.master = (req, res, next) => {

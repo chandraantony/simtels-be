@@ -1,3 +1,5 @@
+const { salt } = require('../../utils/function');
+
 exports.region = (data) => {
   const request = {
     name: data.name,
@@ -117,6 +119,21 @@ exports.finance = (data) => {
 };
 
 exports.user = (data) => {
+  const request = {
+    name: data.name,
+    role_id: data.role_id,
+    job: data.job,
+    password: salt(data.password),
+    job_desc: data.job_desc,
+    descriptions: data.descriptions,
+    picture: data.picture,
+    email: data.email,
+    address: data.address
+  };
+  return request;
+};
+
+exports.editUser = (data) => {
   const request = {
     name: data.name,
     role_id: data.role_id,
