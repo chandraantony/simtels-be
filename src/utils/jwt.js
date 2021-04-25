@@ -19,7 +19,6 @@ exports.refreshToken = (token, refreshToken) => {
 
 exports.decodeToken = (token) => {
   const decode = jwt.verify(token, process.env.SECRET_KEY);
-  console.log(decode);
   return decode;
 };
 

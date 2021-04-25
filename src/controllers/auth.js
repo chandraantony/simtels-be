@@ -18,7 +18,9 @@ exports.login = async (req, res, next) => {
         const formatData = JSON.parse(stringfy);
         const token = createToken(formatData);
         if (compare(req.body.password, findData.password)) {
-          res.json({ token: token.token, refresh_token: token.refresh_token, data: findData });
+          res.json({
+            success: true, token: token.token, refresh_token: token.refresh_token, data: findData
+          });
         } else {
           res.json(resFailNotFound('Password Wrong'));
           res.status(401);

@@ -8,5 +8,6 @@ router.put('/update', projectController.updateProject);
 router.delete('/delete/:id', projectController.deleteById);
 router.get('/find/:id', projectController.getById);
 router.get('/list', projectController.getList);
+router.get('/perYear/:year', projectController.perYear);
 
 module.exports = router;

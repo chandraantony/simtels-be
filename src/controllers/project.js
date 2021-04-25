@@ -1,7 +1,17 @@
 const {
-  create, deleteData, findAll, findById, update
+  create, deleteData, findAll, findById, update, projectPerYear
 } = require('../repositories/project');
 const makeResponse = require('../utils/response');
+
+exports.perYear = async (req, res, next) => {
+  try {
+    const { year } = req.params;
+    const query = await projectPerYear(year);
+    res.send(query);
+  } catch (error) {
+    next(error);
+  }
+};
 
 exports.createProject = async (req, res, next) => {
   const project = req.body;
@@ -30,7 +40,10 @@ exports.getById = async (req, res, next) => {
 
 exports.getList = async (req, res, next) => {
   try {
-    const query = await findAll();
+    const size = req.query.size || 10;
+    const page = req.query.page > 0 ? parseInt(req.query.page) - 1 : 0 || 0;
+    const keyword = req.query.search ? req.query.search : '';
+    const query = await findAll(size, page, keyword);
     res.send(makeResponse.responseSuccesList(query));
   } catch (error) {
     next(error);
