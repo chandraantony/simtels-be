@@ -10,6 +10,7 @@ const services = require('./services');
 const project = require('./project');
 const finance = require('./finance');
 const auth = require('./auth');
+const exportJSON = require('./export');
 
 const router = express.Router();
 
@@ -29,5 +30,6 @@ router.use('/role', role);
 router.use('/finance', finance);
 router.use('/upload', upload);
 router.use('/auth', auth);
+router.use('/export', exportJSON)
 
 module.exports = router;
