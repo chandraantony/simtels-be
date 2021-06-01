@@ -16,6 +16,15 @@ exports.jobProgress = (data) => {
   return request;
 };
 
+exports.targetProject = (data) => {
+  const request = {
+    month: data.month,
+    year: data.year,
+    target: data.target
+  };
+  return request;
+};
+
 exports.customer = (data) => {
   const request = {
     name: data.name,
@@ -52,7 +61,7 @@ exports.project = (data) => {
     no_internal_user: data.no_internal_user,
     no_so: data.no_so,
     ps_no: data.ps_no,
-    ps_date : data.ps_date,
+    ps_date: data.ps_date,
     so_date: data.so_date,
     job_name: data.job_name,
     pkb_sph_no: data.pkb_sph_no,
@@ -74,14 +83,14 @@ exports.project = (data) => {
 
 exports.detailProject = (data) => {
   const request = {
-    submit_survey_plan: data.submit_survey_plan ?data.submit_survey_plan : null,
+    submit_survey_plan: data.submit_survey_plan ? data.submit_survey_plan : null,
     submit_survey_realization: data.submit_survey_realization ? data.submit_survey_realization : null,
     submit_survey_obstacle: data.submit_survey_obstacle,
-    fo_withdrawal_plan: data.fo_withdrawal_plan ? data.fo_withdrawal_obstacle : null,
+    fo_withdrawal_plan: data.fo_withdrawal_plan ? data.fo_withdrawal_plan : null,
     fo_withdrawal_realization: data.fo_withdrawal_realization ? data.fo_withdrawal_realization : null,
     fo_withdrawal_obstacle: data.fo_withdrawal_obstacle,
     installation_fot_plan: data.installation_fot_plan ? data.installation_fot_plan : null,
-    installation_fot_realization: data.installation_fot_realization ? data.installation_fot_realization :null,
+    installation_fot_realization: data.installation_fot_realization ? data.installation_fot_realization : null,
     installation_fot_obstacle: data.installation_fot_obstacle,
     testcomm_plan: data.testcomm_plan ? data.testcomm_plan : null,
     testcomm_realization: data.testcomm_realization ? data.testcomm_realization : null,
@@ -99,6 +108,7 @@ exports.detailProject = (data) => {
     gr_realization: data.gr_realization ? data.gr_realization : null,
     gr_obstacle: data.gr_obstacle,
   };
+  console.log(request)
   return request;
 };
 
@@ -107,6 +117,7 @@ exports.finance = (data) => {
     gr_number: data.gr_number,
     gr_date: data.gr_date,
     gr_nominal: data.gr_nominal,
+    no_so: data.no_so,
     invoice_number: data.invoice_number,
     invoice_date: data.invoice_date,
     invoice_nominal: data.invoice_nominal,

@@ -9,7 +9,7 @@ exports.findById = (id) => {
 exports.findAll = (pageSize, pageNumber, search) => {
   let data;
   if (search) {
-    data = Finance.query().whereRaw('LOWER(name) LIKE ?', `%${search.toLowerCase()}%`).page(pageNumber, pageSize);
+    data = Finance.query().whereRaw('LOWER(no_so) LIKE ?', `%${search.toLowerCase()}%`).page(pageNumber, pageSize);
   } else {
     data = Finance.query().page(pageNumber, pageSize);
   }

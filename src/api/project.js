@@ -9,5 +9,7 @@ router.delete('/delete/:id', projectController.deleteById);
 router.get('/find/:id', projectController.getById);
 router.get('/list', projectController.getList);
 router.get('/perYear/:year', projectController.perYear);
+router.get('/summaryProject', projectController.chartData);
+router.get('/monthly', projectController.projectPerMonth);
 
 module.exports = router;

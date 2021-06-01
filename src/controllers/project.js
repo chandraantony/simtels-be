@@ -1,5 +1,5 @@
 const {
-  create, deleteData, findAll, findById, update, projectPerYear
+  create, deleteData, findAll, findById, update, projectPerYear, projectTarget, projectMonthly
 } = require('../repositories/project');
 const makeResponse = require('../utils/response');
 
@@ -7,6 +7,7 @@ exports.perYear = async (req, res, next) => {
   try {
     const { year } = req.params;
     const query = await projectPerYear(year);
+    // console.log(query);
     res.send(query);
   } catch (error) {
     next(error);
@@ -74,6 +75,28 @@ exports.updateProject = async (req, res, next) => {
       res.json(makeResponse.resSuccessNotFound());
     }
   } catch (error) {
+    console.log(error)
     next(error);
   }
 };
+
+exports.projectPerMonth = async (req, res, next) => {
+  const {month,year} = req.query
+  console.log(month, year)
+  try {
+    const query = await projectMonthly(year, month)
+    res.send(query)
+  } catch (error) {
+    next(error)
+  }
+}
+
+exports.chartData = async (req, res, next) => {
+  const { year } = req.query
+  try {
+    const query = await projectTarget(year)
+    res.send(query)
+  } catch (error) {
+    next(error)
+  }
+}

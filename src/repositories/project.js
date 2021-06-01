@@ -2,6 +2,7 @@ const { transaction, raw } = require('objection');
 const Project = require('../../models/project');
 const DetailProject = require('../../models/detailPorject');
 const model = require('./model');
+const Region = require('../../models/mstRegion');
 
 exports.create = (data, detail) => {
   try {
@@ -20,12 +21,37 @@ exports.create = (data, detail) => {
 exports.projectPerYear = (year) => {
   const query = Project.query().select(raw('count(project.id) as total_project'),
     raw(`sum(pkb_sph_nominal) as total_pkb`),
-    raw('sum(pkt_nominal) as total_pkt'),
-    'mst_region.name as region_name')
+    // raw('sum(if(ModeOfPayment = 'Offline',Amount,0)) as TotalAmount')
+    raw('sum(pkt_nominal) as total_pkt'))
     .join('mst_region', 'project.sbu_id', 'mst_region.id')
-    .groupBy('mst_region.name');
+    .groupBy('mst_region.mst_region.name as region_name');
   return query;
 };
+
+exports.projectTarget = (year) => {
+  console.log(year)
+  const query = Project.query().select(raw('count(project.id) as total_project'),
+  raw(`sum(pkb_sph_nominal) as total_pkb`),
+  raw('sum(pkt_nominal) as total_pkt'),
+  raw('sum(finance.invoice_nominal) as total_invoice')
+  ,'mst_region.name as region_name')
+  .leftJoin('finance', 'project.no_so', 'finance.no_so')
+  .join('mst_region', 'project.sbu_id', 'mst_region.id')
+  .whereRaw(`EXTRACT(YEAR FROM project.so_date) = ${year}`)
+  .groupBy('mst_region.id')
+  return query
+}
+
+exports.projectMonthly = (year,month) => {
+  const query = Region.query().select('mst_region.id', 'name', 
+  raw('sum(project.pkt_nominal) as total_pkt'))
+  .leftJoin('project', 'mst_region.id', 'project.sbu_id')
+  .whereRaw(`EXTRACT(YEAR FROM project.so_date) = ${year}`)
+  .whereRaw(`EXTRACT(MONTH FROM project.so_date) = ${parseInt(month)+1}`)
+  .groupBy('mst_region.id')
+  return query
+}
+
 
 exports.update = (data) => {
   const detail_project = data.job_detail;
