@@ -64,7 +64,7 @@ exports.reportSummary = async (req, res, next) => {
     );
     res.setHeader(
       'Content-Disposition',
-      'attachment; filename=' + 'tutorials.xlsx'
+      'attachment; filename=' + 'test.xlsx'
     );
 
     workbook.xlsx.write(res).then(() => {

@@ -1,5 +1,6 @@
 const { transaction, raw } = require('objection');
 const Project = require('../../models/project');
+const moment = require('moment')
 const DetailProject = require('../../models/detailPorject');
 const model = require('./model');
 const Region = require('../../models/mstRegion');
@@ -17,6 +18,17 @@ exports.create = (data, detail) => {
     return error;
   }
 };
+
+exports.updateInsternalUser = (data) => {
+  const format = moment().format(`MMDD[/${data}/TEK/STS/]yy`)
+  const query = Project.query()
+  .findById(data)
+  .patch({
+    no_internal_user: format
+  });
+
+  return query 
+}
 
 exports.projectPerYear = (year) => {
   const query = Project.query().select(raw('count(project.id) as total_project'),

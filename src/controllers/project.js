@@ -1,5 +1,5 @@
 const {
-  create, deleteData, findAll, findById, update, projectPerYear, projectTarget, projectMonthly
+  create, deleteData, findAll, findById, update, projectPerYear, projectTarget, projectMonthly, updateInsternalUser
 } = require('../repositories/project');
 const makeResponse = require('../utils/response');
 
@@ -19,6 +19,8 @@ exports.createProject = async (req, res, next) => {
   const { job_detail } = project;
   try {
     const query = await create(project, job_detail);
+    const setInternalUser = await updateInsternalUser(query.id)
+    console.log(query.id)
     res.send(makeResponse.resSuccessCreate('Data created', query));
   } catch (error) {
     next(error);

@@ -2,6 +2,7 @@ const BaseModel = require('.');
 const JobProgress = require('./mstStatus');
 
 class Project extends BaseModel {
+
   static get tableName() {
     return 'project';
   }
