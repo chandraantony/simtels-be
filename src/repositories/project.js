@@ -20,7 +20,7 @@ exports.create = (data, detail) => {
 };
 
 exports.updateInsternalUser = (data) => {
-  const format = moment().format(`MMDD[/${data}/TEK/STS/]yy`)
+  const format = moment().format(`[${data}/MM/TEK/STS/]yy`)
   const query = Project.query()
   .findById(data)
   .patch({
