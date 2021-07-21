@@ -75,7 +75,7 @@ exports.project = (data) => {
     baps_no: data.baps_no,
     baps_date: data.baps_date ? moment(data.baps_date).format() : null, 
     fine_type: data.fine_type,
-    fine_percentage: data.fine_percentage,
+    fine_percentage: Number(data.fine_percentage),
     fine_nominal: Math.round(Number(data.pkt_nominal)*Number(data.fine_percentage)/100),
     total_pkt :( data.fine_nominal && data.pkt_nominal )? Number(data.pkt_nominal) - Math.round(Number(data.pkt_nominal)*Number(data.fine_percentage)/100) : 0,
     job_detail_id: data.job_detail_id,
